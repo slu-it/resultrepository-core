@@ -30,21 +30,8 @@
         </triggeringPolicy>
     </appender>
 
-    <appender
-            name="CONSOLE"
-            class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
+    <root level="WARN">
         <appender-ref ref="FILE"/>
     </root>
-
-    <logger
-            name="info.novatec"
-            level="DEBUG"/>
 
 </configuration>
