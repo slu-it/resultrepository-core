@@ -50,6 +50,8 @@ public interface BuildJobsRemoteService {
      */
     BuildJobData findById(Long buildJobId) throws RemoteOperationException;
 
+    BuildJobData deleteById(Long id);
+
     /**
      * Looks up a {@link BuildJobData build job} by it's unique ID and returns
      * all of it's {@link BuildData builds}.

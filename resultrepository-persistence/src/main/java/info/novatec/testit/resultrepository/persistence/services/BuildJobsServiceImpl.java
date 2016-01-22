@@ -74,6 +74,18 @@ public class BuildJobsServiceImpl implements BuildJobsService {
     @Measured
     @Transacted
     @Logged(logLevel = LogLevel.TRACE, printArguments = true)
+    public BuildJobData deleteById(Long id) {
+        BuildJobNode node = getRequiredBuildJobNode(id);
+        BuildJobData buildJobData = new BuildJobData(node);
+        node.getBuilds().forEach(build -> build.deleteWithRelationships());
+        node.deleteWithRelationships();
+        return buildJobData;
+    }
+
+    @Override
+    @Measured
+    @Transacted
+    @Logged(logLevel = LogLevel.TRACE, printArguments = true)
     public Set<BuildData> findBuilds(Long id) {
         return getRequiredBuildJobNode(id).getBuildsStream().map(build -> new BuildData(build)).collect(Collectors.toSet());
     }

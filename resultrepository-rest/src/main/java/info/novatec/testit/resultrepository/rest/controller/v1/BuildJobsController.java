@@ -56,6 +56,15 @@ public class BuildJobsController implements BuildJobsRemoteService {
 
     @Override
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = V1ContextPaths.BUILDJOB_FOR_ID, method = RequestMethod.DELETE)
+    public
+    @ResponseBody
+    BuildJobData deleteById(@PathVariable Long id) {
+        return delegateService.deleteById(id);
+    }
+
+    @Override
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = V1ContextPaths.BUILDS_OF_BUILDJOB_FOR_ID, method = RequestMethod.GET)
     public
     @ResponseBody

@@ -85,6 +85,17 @@ public class BuildJobsServiceIntegrationTest extends AbstractPersistenceIntegrat
     }
 
     @Test
+    public void testDeleteBuildJobById() {
+
+        Long id = createBuildJob("buildJob").getId();
+        assertThat(cut.findById(id)).isNotNull();
+
+        cut.deleteById(id);
+        assertThat(cut.findById(id)).isNull();
+
+    }
+
+    @Test
     public void testFindBuildsForBuildJobWithId() {
 
         BuildJobData buildJob = createBuildJob("buildJob");
